@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",
+    "ibm-watson": "^6.0.2",
+    "microsoft-cognitiveservices-speech-sdk": "^1.14.0",
+    "module": "^1.2.5",
+    "node-wav": "0.0.2",
+    "readline": "^1.3.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {

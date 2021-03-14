@@ -12,6 +12,12 @@ export default {
 
   props: ['id', 'solutionName', 'description','url', 'solutionError'],
   //emits: ['select-solution'],
+  // methods: {
+  //   generateUrl(url){
+  //     console.log(url);
+  //     return requr;
+  //   }
+  // }
 };
 </script>
 
@@ -33,5 +39,4 @@ div {
     border-color: red;
   background-color: #faf5f5;
 }
-
 </style>

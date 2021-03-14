@@ -18,7 +18,7 @@ export default {
                     id: 'AWS',
                     title: 'Amazon Polly',
                     description: 'Amazon Polly description',
-                    url: 'http://localhost:8080/img/AWS.a4e56b7d.jpg'
+                    url: '/img/AWS.a4e56b7d.jpg'
                 },
                 { 
                     id: 'Google',
@@ -30,7 +30,7 @@ export default {
                     id: 'Microsoft',
                     title: 'Microsoft Azure',
                     description: 'Microsoft description',
-                    url: 'http://localhost:8080/img/Microsoft.8fa2eda8.jpg'
+                    url: '/img/Microsoft.8fa2eda8.jpg'
                 }
             ]
         };
