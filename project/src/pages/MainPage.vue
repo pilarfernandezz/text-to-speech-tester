@@ -3,30 +3,29 @@
         <solution-base
         @generate-audio="generateAudio">
       </solution-base>
-      <audio-base v-if="audio" class="audio" :key="enteredText"></audio-base> 
-
-      <p>{{file}}</p>
-
-      <audio v-if="audio" controls>
-        <source v-if="audio" :src='file' alt="carregando">
-        seu navegador não suporta HTML5
-      </audio>
+      <audio-base v-if="audio" :url='file' class="audio" :key="enteredText"></audio-base> 
+      <section v-if=loading>
+        <loading-bar></loading-bar>
+      </section>
     </div>
 </template>
 
  <script>
 import api from '../../api';
-// import fs from 'fs';
+import LoadingBar from "../components/LoadingBar";
 
 export default {
+  components: { LoadingBar },
   data () {
       return {
         audio: false,
         file: null,
+        loading:false,
       }
   },
   methods: {
     createbloburl(file, type) {
+        console.log(file)
         console.log('type',type);
         var blob = new Blob([file], {
           type: type || 'application/*'
@@ -35,33 +34,52 @@ export default {
         console.log('\n', file)
         this.file = URL.createObjectURL(blob);
         this.audio = true;
+        this.loading = false;
     },
 
     async generateAudio(enteredText,selected){
       this.audio = false;
+      this.loading = true;
       console.log(enteredText);
       console.log(selected);
 
       if(selected === 'IBM'){
-        const file = await api.post('/createAudio', null, { params: {
+        const res = await api.post('/createAudio', null, { params: {
           text:enteredText,
           tool: selected
         }})
 
-        const buffer = new Buffer(file.data.data, 'base64')
+        const buffer = new Buffer(res.data.data, 'base64');
 
-        console.log('buffer', buffer)
-        console.log(file);
-        console.log(typeof file.data.data)
-        
-        // const arquivo = new File(file.data.data, 'dewef.wav', {type: "audio/wav"})
-        // fs.writeFileSync('./teste.txt',file)
-        // this.file = URL.createObjectURL(arquivo)
-        this.createbloburl( buffer ,'audio/wav')
+        this.createbloburl(buffer ,'audio/ wav');
       }
-      if (selected === "Microsoft"){
-        // generateAudio(enteredText);
-      }
+      else if (selected === "Microsoft"){
+        const res = await api.post('/createAudio', null, { params: {
+          text:enteredText,
+          tool: selected
+        }})
+
+        const buffer = new Buffer(res.data.data, 'base64');
+        this.createbloburl(buffer ,'audio/ wav');
+      } 
+      else if (selected === "Google"){
+        const res = await api.post('/createAudio', null, { params: {
+          text:enteredText,
+          tool: selected
+        }})
+
+        const buffer = new Buffer(res.data.data, 'base64');
+        this.createbloburl(buffer ,'audio/ wav');
+      }   
+      else if (selected === "AWS"){
+        const res = await api.post('/createAudio', null, { params: {
+          text:enteredText,
+          tool: selected
+        }})
+
+        const buffer = new Buffer(res.data.data, 'base64');
+        this.createbloburl(buffer ,'audio/ wav');
+      }   
       this.scrollToElement();
     },
     scrollToElement() {

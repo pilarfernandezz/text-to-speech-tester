@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-
 import App from './App.vue';
 import SolutionBase from './components/SolutionBase.vue';
 import SolutionGrid from './components/SolutionGrid.vue';
@@ -8,9 +7,10 @@ import AudioElement from './components/AudioElement.vue';
 import AudioBase from './components/AudioBase.vue';
 import TheHeader from './components/TheHeader.vue';
 import MainPage from './pages/MainPage.vue';
+import VueProgress from 'vue-progress-path'
 
 const app = createApp(App);
-
+app.component('vue-progress',VueProgress);
 app.component('solution-base', SolutionBase);
 app.component('solution-grid', SolutionGrid);
 app.component('solution-element', SolutionElement);

@@ -1,7 +1,7 @@
 <template>
 <div>
     <audio controls>
-        <source src='../audio.wav' alt="carregando">
+        <source :src='url' alt="carregando">
         seu navegador não suporta HTML5
     </audio>
 </div>
@@ -9,12 +9,7 @@
 
 <script>
 export default {
-    created() {
-        console.log("created")
-    },
-    mounted() {
-        console.log("mounted")
-    }
+    props: ['url'],
 }
 </script>
 
