@@ -7,21 +7,13 @@
 
 <script>
 export default {
-
-  //inject: ['selectSolution'],
-
   props: ['id', 'solutionName', 'description','url', 'solutionError'],
-  //emits: ['select-solution'],
-  // methods: {
-  //   generateUrl(url){
-  //     console.log(url);
-  //     return requr;
-  //   }
-  // }
+
 };
 </script>
 
 <style scoped>
+
 img {
   width: 100%;
   align-self: center;
@@ -38,5 +30,23 @@ div {
 .error {
     border-color: red;
   background-color: #faf5f5;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 15rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

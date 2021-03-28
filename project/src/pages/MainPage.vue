@@ -1,6 +1,6 @@
  <template>
     <div ref="base" id="base">
-        <solution-base
+      <solution-base
         @generate-audio="generateAudio">
       </solution-base>
       <audio-base v-if="audio" :url='file' class="audio" :key="enteredText"></audio-base> 
@@ -12,7 +12,7 @@
 
  <script>
 import api from '../../api';
-import LoadingBar from "../components/LoadingBar";
+import LoadingBar from "../components/layout/LoadingBar";
 
 export default {
   components: { LoadingBar },
@@ -25,13 +25,9 @@ export default {
   },
   methods: {
     createbloburl(file, type) {
-        console.log(file)
-        console.log('type',type);
         var blob = new Blob([file], {
           type: type || 'application/*'
         });
-        console.log(blob)
-        console.log('\n', file)
         this.file = URL.createObjectURL(blob);
         this.audio = true;
         this.loading = false;
@@ -40,46 +36,13 @@ export default {
     async generateAudio(enteredText,selected){
       this.audio = false;
       this.loading = true;
-      console.log(enteredText);
-      console.log(selected);
-
-      if(selected === 'IBM'){
-        const res = await api.post('/createAudio', null, { params: {
-          text:enteredText,
+      const res = await api.post('/createAudio', null, { params: {
+          text: enteredText,
           tool: selected
         }})
 
-        const buffer = new Buffer(res.data.data, 'base64');
-
-        this.createbloburl(buffer ,'audio/ wav');
-      }
-      else if (selected === "Microsoft"){
-        const res = await api.post('/createAudio', null, { params: {
-          text:enteredText,
-          tool: selected
-        }})
-
-        const buffer = new Buffer(res.data.data, 'base64');
-        this.createbloburl(buffer ,'audio/ wav');
-      } 
-      else if (selected === "Google"){
-        const res = await api.post('/createAudio', null, { params: {
-          text:enteredText,
-          tool: selected
-        }})
-
-        const buffer = new Buffer(res.data.data, 'base64');
-        this.createbloburl(buffer ,'audio/ wav');
-      }   
-      else if (selected === "AWS"){
-        const res = await api.post('/createAudio', null, { params: {
-          text:enteredText,
-          tool: selected
-        }})
-
-        const buffer = new Buffer(res.data.data, 'base64');
-        this.createbloburl(buffer ,'audio/ wav');
-      }   
+      const buffer = new Buffer(res.data.data, 'base64');
+      this.createbloburl(buffer ,'audio/ wav');
       this.scrollToElement();
     },
     scrollToElement() {
