@@ -1,0 +1,8 @@
+{
+    "parser": "babel-eslint",
+    "rules": {
+        "eqeqeq": "off",
+        "curly": "warn",
+        "quotes": ["warn", "double"]
+    }
+}
