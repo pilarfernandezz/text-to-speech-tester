@@ -1,5 +1,5 @@
 <template>
-  <li :class="{error: solutionError, ibm:solutionName==='IBM Watson', aws:solutionName==='Amazon Polly', ms:solutionName==='Microsoft Azure', gg:solutionName==='Google Cloud'}">
+  <li :class="{ibm:solutionName==='IBM Watson', aws:solutionName==='Amazon Polly', ms:solutionName==='Microsoft Azure', gg:solutionName==='Google Cloud'}">
     <h3>{{ solutionName }}</h3>
     <img :src="url">
   </li>

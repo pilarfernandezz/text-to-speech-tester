@@ -5,7 +5,7 @@
       :class="{error: textError}"
       v-model="enteredText"
     ></textarea>
-    <h7 v-if="textError">Favor digitar um texto para ser lido </h7>
+    <h6 v-if="textError">Favor digitar um texto para ser lido </h6>
     <hr class="hr3">
     <h2>Seleciona uma ferramenta Text to Speech para ler o texto:</h2>
     <solution-grid 
@@ -13,7 +13,7 @@
       :solutionError = solutionError
       @select-solution="selectSolution">
     </solution-grid>
-    <h7 v-if="solutionError">Favor selecione a ferramente de sintese de texto a ser utilizada</h7>
+    <h6 v-if="solutionError">Favor selecione a ferramente de sintese de texto a ser utilizada</h6>
     <button @click='generateAudio'>Gerar Audio</button>
   </section>
 </template>
