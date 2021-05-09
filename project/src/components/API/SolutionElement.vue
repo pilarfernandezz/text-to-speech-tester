@@ -1,14 +1,26 @@
 <template>
   <li :class="{error: solutionError}">
-    <h3>{{ solutionName }}</h3>
-    <img :src="url">
+    <h3>{{ getSolutionName() }}</h3>
+    <img v-if='!hide' :src="url">
+    <div v-else :class='id'> </div>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['id', 'solutionName', 'description','url', 'solutionError'],
-
+  props: ['id', 'solutionName', 'description','url', 'solutionError',  'hide'],
+  methods: {
+    getSolutionName(){
+      if (this.hide) {
+        console.log('efefef')
+        if (this.solutionName === 'IBM Watson') return 'Solução #1';
+        if (this.solutionName === 'Amazon Polly') return 'Solução #2';
+        if (this.solutionName === 'Google Cloud') return 'Solução #3';
+        if (this.solutionName === 'Microsoft Azure') return 'Solução #4';
+      }
+      else return this.solutionName;
+    }
+  }
 };
 </script>
 
@@ -48,5 +60,37 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.IBM {
+  border-radius: 100px;
+  background: red;
+  padding: 20px;
+  width: 130px;
+  height: 130px;
+}
+
+.AWS {
+  border-radius: 100px;
+  background: green;
+  padding: 20px;
+  width: 130px;
+  height: 130px;
+}
+
+.Google {
+  border-radius: 100px;
+  background: blue;
+  padding: 20px;
+  width: 130px;
+  height: 130px;
+}
+
+.Microsoft {
+  border-radius: 100px;
+  background: yellow;
+  padding: 20px;
+  width: 130px;
+  height: 130px;
 }
 </style>
