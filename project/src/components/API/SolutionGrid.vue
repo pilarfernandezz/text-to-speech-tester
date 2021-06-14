@@ -6,7 +6,6 @@
     </label>
   </div>
 
-
   <ul>
     <solution-element
       :hide=hide
@@ -40,7 +39,6 @@ export default {
           this.$emit('select-solution', id);
       },
       hideSolution(){
-        console.log(this.hide);
         this.hide = !this.hide;
       }
   },

@@ -12,7 +12,6 @@ export default {
   methods: {
     getSolutionName(){
       if (this.hide) {
-        console.log('efefef')
         if (this.solutionName === 'IBM Watson') return 'Solução #1';
         if (this.solutionName === 'Amazon Polly') return 'Solução #2';
         if (this.solutionName === 'Google Cloud') return 'Solução #3';

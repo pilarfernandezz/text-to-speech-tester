@@ -56,13 +56,9 @@ export default {
     },
     methods: {
       createbloburl(file, type) {
-        console.log('type',type);
         var blob = new Blob([file], {
           type: type || 'application/*'
         });
-        console.log(blob)
-        console.log('\n````````', file)
-        console.log(URL.createObjectURL(blob))
         return URL.createObjectURL(blob);
       },
     }
